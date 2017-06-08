@@ -1,31 +1,38 @@
 import Models.Group;
+import Models.Student;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import java.util.Date;
+import java.util.HashSet;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        try ("add resources here"){
+        try {
             System.out.println("Creating...");
-            Group gr1 = new Group();
-
-            ObjectInputStream ois = new ObjectInputStream();
-            gr1.setStudents() = ;
+            // HashSet<Student> stset1 = new HashSet<Student>();
+            Student std1 = new Student("Imyarek", "Familiyarekov", new Date(System.currentTimeMillis()), (long) 0);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
             System.out.println("Serializing...");
-            oos.readObject(gr1);
+            oos.writeObject(std1);
             oos.flush();
+            baos.flush();
             oos.close();
-            ObjectOutputStream oos = new ObjectOutputStream();
+            baos.close();
+            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+            ObjectInputStream ois = new ObjectInputStream(bais);
             System.out.println("Deserializing...");
-            Group gr1 = (Group)oos.readObject();
+            Student std2 = (Student)ois.readObject();
+            System.out.println("Student std1 name="+std1.getName());
+            System.out.println("Student std2 name="+std2.getName());
         } catch (IOException ex){
             ex.printStackTrace();
         } catch (ClassNotFoundException ex){
             ex.printStackTrace();
         }
-
     }
+
 }
+

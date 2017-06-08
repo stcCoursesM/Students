@@ -1,5 +1,6 @@
 package Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,9 +9,9 @@ import java.util.Random;
 /**
  * Created on 08/06/2017.
  */
-public class Student {
+public class Student implements Serializable {
 
-    public Student(String name, String surname, Date dateOfBirth, Long groupID, List<Contact> contacts) {
+    public Student(String name, String surname, Date dateOfBirth, Long groupID) {
         this.name = name;
         this.surname = surname;
         this.dateOfBirth = dateOfBirth;
@@ -18,6 +19,8 @@ public class Student {
         this.contacts = new ArrayList<>();
         this.studentId = (System.currentTimeMillis()+ (int)(Math.random()*100));
     }
+
+
 
 
     @Override
