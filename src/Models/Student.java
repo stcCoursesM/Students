@@ -11,6 +11,17 @@ import java.util.Random;
  */
 public class Student implements Serializable {
 
+
+    public Student() {
+        this.name = "name";
+        this.surname = "surname";
+        this.dateOfBirth = new Date();
+        this.groupID = 1l;
+        this.contacts = new ArrayList<>();
+        this.studentId = (System.currentTimeMillis()+ (int)(Math.random()*100));
+    }
+
+
     public Student(String name, String surname, Date dateOfBirth, Long groupID) {
         this.name = name;
         this.surname = surname;
@@ -103,7 +114,7 @@ public class Student implements Serializable {
     private String surname;
     private String email;
     private Date dateOfBirth;
-    private Long studentId;
+    public Long studentId;
     private Long groupID;
     private List<Contact> contacts;
 
